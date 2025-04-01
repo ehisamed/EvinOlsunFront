@@ -24,5 +24,16 @@
 //     </div>
 //   );
 // };
-//
+
 // export default IconComponent;
+
+
+import React from 'react'
+
+const ExampleIcon = () => {
+  return (
+    <div>ExampleIcon</div>
+  )
+}
+
+export default ExampleIcon

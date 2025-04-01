@@ -1,0 +1,13 @@
+@use '../../../../styleConfig/mixins' as mixins;
+
+.base-button{
+    @include mixins.button-base(#009E36, #fff, null, null, null, #018931, #fff);
+}
+
+.login{
+    @include mixins.button-base(#fff, #000, 10px 25px, null, none, #afffcb, #272727);
+}
+
+.flexx{
+    @include mixins.flex-column(flex-start, center);
+}

@@ -1,0 +1,13 @@
+@use './colors' as colors;
+@use './fonts_connect';
+@use './fonts_variables' as fonts;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: fonts.$rb-font;
+}

@@ -1,0 +1,52 @@
+@use './block_varibales' as block;
+@use './colors' as colors;
+
+
+@mixin button-base(
+    $bg: colors.$grey-300,
+    $color: colors.$black,
+    $pd: block.$pd-mg-6 block.$pd-mg-14,
+    $border: none,
+    $radius: block.$radius-6,
+    $hover-bg: colors.$grey-900,
+    $hover-color: colors.$white,
+    $ms: block.$ms-300) {
+
+    background-color: if($bg == null, colors.$grey-300, $bg);
+    color: if($color == null, colors.$black, $color);
+    padding: if($pd == null, block.$pd-mg-6 block.$pd-mg-14, $pd);
+    border: if($border == null, none, $border);
+    border-radius: if($radius == null, block.$radius-4, $radius);
+    cursor: pointer;
+    transition: background-color if($ms == null, block.$ms-300, $ms);
+    overflow: hidden;
+
+    @include hover($hover-bg, $hover-color);
+}
+
+@mixin hover($bg, $color) {
+    &:hover {
+        background-color: $bg;
+        color: $color;
+    }
+}
+
+@mixin flex($justify: center, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin flex-center() {
+    @include flex(center, center);
+}
+
+@mixin flex-row($justify: center, $align: center) {
+    @include flex($justify, $align);
+    flex-direction: row;
+}
+
+@mixin flex-column($justify: center, $align: center) {
+    @include flex($justify, $align);
+    flex-direction: column;
+}
