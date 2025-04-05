@@ -50,3 +50,18 @@
     @include flex($justify, $align);
     flex-direction: column;
 }
+
+@mixin resetBtn(){
+    border: none;
+    background: none;
+    outline: none;
+}
+
+@mixin text($size, $color, $hoverColor){
+    font-size: $size;
+    color: $color;
+
+    &:hover{
+        color: $hoverColor;
+    }
+}

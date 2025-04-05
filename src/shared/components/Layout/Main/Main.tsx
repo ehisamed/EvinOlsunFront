@@ -10,7 +10,6 @@ const MainSection = styled.main`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0px 24px;
 `
 
 const Main: React.FC<Props> = ({ children }) => {

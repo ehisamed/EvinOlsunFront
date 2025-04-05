@@ -3,16 +3,21 @@ import GlobalContainer from '../../shared/components/Layout/GlobalContainer/Glob
 import Main from '../../shared/components/Layout/Main/Main'
 import Footer from '../../shared/components/Layout/Footer/Footer'
 import Header from '../../shared/components/Layout/Header/Header'
+import Sidebar from '../../shared/components/Layout/Header/components/Sidebar/Sidebar'
 
 const Home = () => {
   return (
-    <GlobalContainer>
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
         <Header />
         <Main>
-            <h1>Main</h1>
+            <h3>main</h3>
         </Main>
         <Footer />
-    </GlobalContainer>
+    </div>
   )
 }
 
