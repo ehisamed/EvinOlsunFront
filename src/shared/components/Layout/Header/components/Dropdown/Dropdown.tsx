@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import DropDownIc from '../../../../../../assets/icons/DropDownIc';
 import './dropdown.scss'
 import DropdownItem from './DropdownItem';
@@ -32,4 +32,4 @@ const Dropdown: React.FC<Props> = ({ title, listItems, onClick, isOpen }) => {
     )
 }
 
-export default Dropdown
+export default memo(Dropdown)

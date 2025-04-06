@@ -12,6 +12,7 @@ import MenuIc from '../../../../assets/icons/MenuIc';
 import CloseIc from '../../../../assets/icons/CloseIc';
 import Sidebar from './components/Sidebar/Sidebar';
 import { memo } from 'react';
+import PhoneIc from '../../../../assets/icons/PhoneIc';
 
 const TplnItemLinkCommonStyle = {
   marginLeft: 'auto'
@@ -36,20 +37,30 @@ const Header: React.FC = () => {
               text='Baku'
             />
           )}
+
           {windowWidth <= 585 && (
             <TplnItemButton
               icon={sidebarIsOpen ? <CloseIc width={18} height={18} /> : <MenuIc width={18} height={18} />}
-              changeIconOnClick={true}
               text='Baku'
               onClick={handleSidebar}
             />
           )}
+
+          {windowWidth >= 585 && (
+            <TplnItemButton
+              icon={<PhoneIc width={18} height={18} />}
+              text='Məsləhət'
+              hoverdBlock={true}
+            />
+          )}
+
           <TplnItemLink
             icon={<FavoriteIc width={18} height={18} />}
             link={'/'}
             text={''}
             commonStyles={TplnItemLinkCommonStyle}
           />
+
           <TplnItemLink
             icon={<NotoficationIc width={18} height={18} />}
             link={'/'}
@@ -57,17 +68,20 @@ const Header: React.FC = () => {
             isNotification={true}
             notificationCount={5}
           />
+
           <TplnItemLink
             icon={<AddAdtIc width={18} height={18} />}
             minWidth={585}
             link={'/'}
             text={'Elan yerləşdir'}
           />
+
           <TplnItemLink
             icon={<UserLoginIc width={18} height={18} />}
             link={'/'}
             text={'Daxil ol'}
           />
+
         </div>
         {windowWidth <= 585 && (
           <Sidebar sidebarIsOpen={sidebarIsOpen} />

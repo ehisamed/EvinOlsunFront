@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 type Props = {
     title?: string;
@@ -12,4 +12,4 @@ const DropdownItem: React.FC<Props> = ({ title, navigateTo }) => {
     )
 }
 
-export default DropdownItem
+export default memo(DropdownItem)

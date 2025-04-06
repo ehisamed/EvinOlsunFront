@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, memo, useMemo } from 'react';
 import './tplnItem.scss';
 import useWindowWidth from '../../../../../../hooks/useWindowWidth';
 
 type Props = {
     text: string;
     icon: React.ReactNode;
-    link: string;
+    link?: string;
     commonStyles?: React.CSSProperties;
     isNotification?: boolean;
     notificationCount?: number;
@@ -22,8 +22,11 @@ const TplnItemLink: React.FC<Props> = ({
     minWidth = 1200,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
-
     const windowWidth = useWindowWidth();
+
+    const shouldShowText = useMemo(() => {
+        return text && windowWidth >= minWidth;
+    }, [text, windowWidth, minWidth]);
 
     return (
         <div
@@ -37,10 +40,10 @@ const TplnItemLink: React.FC<Props> = ({
             }}>
                 <div className='header-tpln-itemContent'>
                     <div className='header-tpln-itemIcon'>
-                        {React.cloneElement(icon as React.ReactElement<any>, { isHovered })}
+                        {icon}
                     </div>
-                    {text &&  windowWidth >= minWidth &&(
-                        <span className='tpln-item-text'>{text}</span>
+                    {shouldShowText && (
+                        <span className='tpln-item-text' data-testid="tpln-item-text">{text}</span>
                     )}
                     {isNotification && notificationCount > 0 && (
                         <div className="notificatoin-circle">
@@ -53,4 +56,4 @@ const TplnItemLink: React.FC<Props> = ({
     );
 }
 
-export default TplnItemLink;
+export default memo(TplnItemLink);
