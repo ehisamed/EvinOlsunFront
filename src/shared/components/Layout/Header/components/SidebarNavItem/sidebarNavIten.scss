@@ -13,6 +13,10 @@
     display: flex;
 }
 
+.sidebar-navItem:active {
+    background-color: color.$gray-modern-100;
+}
+
 .sidebar-navItem-itemContnet{
     width: 100%;
     display: flex;
@@ -31,9 +35,6 @@
     @include mixins.text(14, color.$gray-modern-600, color.$gray-modern-800);
 }
 
-.sidebar-navItem-icon{
-
-}
 
 .sidebar-navItem-text{
     font-size: font.$font-size14;

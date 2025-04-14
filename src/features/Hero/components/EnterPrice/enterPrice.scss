@@ -1,0 +1,90 @@
+@use '../../../../styleConfig/fonts_variables' as font;
+@use '../../../../styleConfig/mixins' as mixins;
+@use '../../../../styleConfig/colors' as color;
+@use '../../../../styleConfig/block_varibales' as blockvb;
+
+.price-enter{
+    width: fit-content;
+    background: color.$white;
+    border: 2px solid color.$gray-modern-400;
+    border-left: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: font.$font-size16;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    width: 100%;
+}
+
+.price-enter-content{
+    position: absolute;
+    background: color.$white;
+    left: 0;
+    top: 100%;
+    margin-top: 12px;
+    width: 300px;
+    border-radius: 10px;
+    -webkit-box-shadow: -1px 0px 8px -1px rgba(5, 5, 6, 0.2);
+    -moz-box-shadow: -1px 0px 8px -1px rgba(5, 5, 6, 0.2);
+    box-shadow: -1px 0px 8px -1px rgba(5, 5, 6, 0.2);
+    padding: 16px;
+    display: none;
+    gap: 10px;
+    cursor:default;
+}
+
+.content-isvisible{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+.price{
+    display: flex;
+    align-items: center;
+    background: color.$gray-modern-200;
+    border-radius: 8px;
+    border: 1px solid color.$gray-modern-200;
+}
+
+.price-focused{
+    border: 1px solid color.$gray-modern-400;
+}
+
+.price-field{
+    width: 100%;
+    outline: none;
+    border: none;
+    background: color.$gray-modern-200;
+    padding: 11px 0px 11px 16px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    font-size: font.$font-size14;
+    color: color.$gray-modern-800;
+    font-weight: font.$rb-weight-medium;
+}
+
+.price-field::placeholder {
+    color: color.$gray-modern-600;
+    font-size: font.$font-size14;
+    font-weight: font.$rb-weight-medium;
+}
+
+.price-field::-webkit-inner-spin-button,
+.price-field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+.price-field::-moz-inner-spin-button {
+    display: none; 
+}
+
+.price-symbol{
+    padding: 0px 16px 0px 8px;
+    font-size: font.$font-size14;
+    color: color.$gray-modern-800;
+}

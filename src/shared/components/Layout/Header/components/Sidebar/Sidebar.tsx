@@ -8,9 +8,10 @@ import LocationIc from '../../../../../../assets/icons/LocationIc';
 type Props = {
   city?: string;
   sidebarIsOpen?: boolean;
+  openModal?: () => void;
 }
 
-const Sidebar: React.FC<Props> = ({ city, sidebarIsOpen }) => {
+const Sidebar: React.FC<Props> = ({ city, sidebarIsOpen, openModal }) => {
   const [dropdownStates, setDropdownStates] = useState<{ [key: string]: boolean }>({
     realEstatePurchase: false,
     realEstateRental: false,
@@ -26,7 +27,7 @@ const Sidebar: React.FC<Props> = ({ city, sidebarIsOpen }) => {
 
   return (
     <section className={`sidebar ${sidebarIsOpen ? 'sidebar-open' : ''}`}>
-      <SidebarNavItem title='NewYork' icon={<LocationIc />} buttonText='Dəyiş'/>
+      <SidebarNavItem title='Baku' onClick={openModal} icon={<LocationIc />} buttonText='Dəyiş'/>
       <Dropdown
         title='Daşınmaz əmlak alışı'
         onClick={() => handleDropdown('realEstatePurchase')}

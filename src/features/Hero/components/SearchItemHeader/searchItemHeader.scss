@@ -1,0 +1,40 @@
+@use '../../../../styleConfig/fonts_variables' as font;
+@use '../../../../styleConfig/mixins' as mixins;
+@use '../../../../styleConfig/colors' as color;
+@use '../../../../styleConfig/block_varibales' as blockvb;
+
+.search-item-header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+}
+
+.search-item-header--prefix{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform .2s ease;
+    color: color.$gray-modern-400;
+}
+
+.search-item-header--title{
+    display: flex;
+    justify-content: start;
+    font-size: font.$font-size16;
+    color: color.$gray-modern-800;
+}
+
+.search-item-header--suffix{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform .2s ease;
+    color: color.$gray-modern-700;
+    margin-left: auto;
+}
+
+.suffix-rotate{
+    transform: rotate(180deg);
+}

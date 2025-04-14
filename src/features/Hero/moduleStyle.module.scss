@@ -1,0 +1,91 @@
+@use '../../styleConfig/fonts_variables' as font;
+@use '../../styleConfig/mixins' as mixins;
+@use '../../styleConfig/colors' as color;
+@use '../../styleConfig/block_varibales' as blockvb;
+
+.hero{
+    width: 100%;
+    max-width: 1168px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    margin: 0 auto;
+    background: color.$white;
+    padding: blockvb.$pd-mg-32 blockvb.$pd-mg-24;
+    margin-top: 24px;
+    border-radius: 24px;
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchHead{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.switch{
+    display: flex;
+    align-items: center;
+}
+
+.switchBtn{
+    padding: 0px 16px;
+    height: 56px;
+    background: none;
+    outline: none;
+    border: none;
+    position: relative;
+    font-size: font.$font-size14;
+    font-weight: font.$rb-weight-semibold;
+    color: color.$gray-modern-700;
+    cursor: pointer;
+    transition: color .2s ease;
+
+    &:hover{
+        color: color.$gray-modern-900;
+    }
+}
+
+.active::after{
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: color.$gray-modern-900;
+}
+
+.searchContent{
+    display: grid;
+    align-items: center;
+    margin-top: 24px;
+    background: color.$gray-modern-600;
+    border-radius: blockvb.$pd-mg-12;
+    position: relative;
+}
+
+.descGrid{
+    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+}
+
+.mobileGrid{
+    grid-template-columns: 4fr 2fr 1fr;
+}
+
+.SearchBtn{
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    color: color.$white;
+    font-size: font.$font-size16;
+    cursor: pointer;
+}

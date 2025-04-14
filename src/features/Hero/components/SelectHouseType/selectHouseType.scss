@@ -1,0 +1,151 @@
+@use '../../../../styleConfig/fonts_variables' as font;
+@use '../../../../styleConfig/mixins' as mixins;
+@use '../../../../styleConfig/colors' as color;
+@use '../../../../styleConfig/block_varibales' as blockvb;
+
+.type-dropdown{
+    width: fit-content;
+    background: color.$white;
+    border: 2px solid color.$gray-modern-400;
+    border-radius: blockvb.$pd-mg-12;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: font.$font-size16;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    width: 100%;
+}
+
+.type-dropdown-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: blockvb.$pd-mg-10 blockvb.$pd-mg-16;
+}
+
+.type-dropdown-content{
+    position: absolute;
+    background: color.$white;
+    left: 0;
+    top: 100%;
+    margin-top: 12px;
+    width: 400px;
+    border-radius: 10px;
+    -webkit-box-shadow: -1px 0px 8px -1px rgba(5, 5, 6, 0.2);
+    -moz-box-shadow: -1px 0px 8px -1px rgba(5, 5, 6, 0.2);
+    box-shadow: -1px 0px 8px -1px rgba(5, 5, 6, 0.2);
+    padding: blockvb.$pd-mg-16;
+    display: none;
+    cursor: default;
+}
+
+.dropdown-visible{
+    display: block;
+}
+
+.dropdown-content-tabbar{
+    display: flex;
+    border: 2px solid color.$gray-modern-700;
+    border-radius: blockvb.$pd-mg-6;
+}
+
+.tabbar-item{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: blockvb.$pd-mg-8 blockvb.$pd-mg-16;
+    color: color.$gray-modern-500;
+    transition: .3s color ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.tabbar-item:last-child {
+    border-right: none;
+}
+
+.active-tab{
+    background: color.$gray-modern-700;
+    color: #fff;
+}
+
+.active-tab.first {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.active-tab.middle {
+    border-radius: 2px; 
+}
+
+.active-tab.last {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.dropdown-content-multiCheckboxBlock{
+    display: flex;
+    flex-direction: column;
+    margin-top: blockvb.$pd-mg-16;
+}
+
+.checkbox-item{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: blockvb.$pd-mg-16;
+}
+
+.checkbox-item:first-child{
+    margin-top: 0px;
+}
+
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px; 
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    margin-right: 10px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.custom-checkbox input:checked + .checkmark {
+    background-color: color.$gray-modern-700;
+    border-color: color.$gray-modern-700;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    width: 16px;
+    height: 16px; 
+    background-image: url('../../../../assets/icons/svg/check.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-item-title{
+    font-size: font.$font-size14;
+    font-weight: font.$rb-weight-regular;
+    color: color.$gray-modern-800;
+}

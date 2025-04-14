@@ -1,22 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
-
+import './main.scss'
 type Props = {
     children: React.ReactNode
 }
 
-const MainSection = styled.main`
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-`
-
 const Main: React.FC<Props> = ({ children }) => {
     return (
-        <MainSection>
+        <div className='main'>
             {children}
-        </MainSection>
+        </div>
     )
 }
 

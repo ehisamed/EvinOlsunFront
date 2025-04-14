@@ -12,7 +12,7 @@
     background: color.$white;
     height: 100vh;
     transition: left .3s ease;
-    top: 53px;
+    top: 41px;
     overflow-y: scroll;
     padding-bottom: 45px;
 }
@@ -57,6 +57,9 @@
 }
 
 @media (max-width: 585px){
+    .sidebar{
+        top: 52px;
+    }
     .sidebar-navItem-itemContnet{
         padding: 0px 12px;
     }

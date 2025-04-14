@@ -11,7 +11,7 @@ type Props = {
 
 const SidebarNavItem: React.FC<Props> = ({ title, onClick, icon, buttonText }) => {
     return (
-        <div className="sidebar-navItem">
+        <div className="sidebar-navItem" onClick={onClick}>
             <div className='sidebar-navItem-itemContnet'>
                 <div className='sidebar-navItem-title'>
                     {icon && (
