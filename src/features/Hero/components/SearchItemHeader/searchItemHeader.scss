@@ -5,10 +5,13 @@
 
 .search-item-header {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     padding: 10px 16px;
+    background: color.$white;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .search-item-header--prefix{
@@ -20,10 +23,15 @@
 }
 
 .search-item-header--title{
-    display: flex;
-    justify-content: start;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden; 
+    text-overflow: ellipsis;;
     font-size: font.$font-size16;
     color: color.$gray-modern-800;
+    max-width: fit-content;
+    overflow: hidden;
 }
 
 .search-item-header--suffix{
@@ -37,4 +45,10 @@
 
 .suffix-rotate{
     transform: rotate(180deg);
+}
+
+@media (max-width: 480px){
+    .search-item-header{
+        padding: 10px 16px;;
+    }
 }

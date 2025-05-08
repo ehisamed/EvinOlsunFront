@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import './sidebarNavIten.scss'
-import LocationIc from '../../../../../../assets/icons/LocationIc'
 
 type Props = {
     title?: string;

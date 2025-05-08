@@ -15,7 +15,6 @@ import { memo } from 'react';
 import PhoneIc from '../../../../assets/icons/PhoneIc';
 import PartnersIc from '../../../../assets/icons/PartnersIc';
 import ModalV1 from '../../ModalV1/ModalV1';
-import { images } from '../../../../assets/images/images';
 
 const TplnItemLinkCommonStyle = {
   marginLeft: 'auto'
@@ -38,7 +37,7 @@ const Header: React.FC = () => {
           <div className="header-tpln-top">
             {windowWidth <= 648 && (
               <TplnItemButton
-                icon={sidebarIsOpen ? <CloseIc width={18} height={18} /> : <MenuIc width={18} height={18} />}
+                icon={sidebarIsOpen ? <CloseIc width={16} height={16} /> : <MenuIc width={18} height={18} />}
                 onClick={handleSidebar}
                 minWidth={648}
               />
@@ -99,13 +98,13 @@ const Header: React.FC = () => {
         </div>
         <div className="header-tpln-bottom-root">
           <div className="header-tpln-bottom">
-            {windowWidth > 648 && (
+            {/* {windowWidth > 648 && (
               <div className="tpln-bottom-logo">
                 <a href="/">
                   <img src='' alt="LOGO" className='logo-img' />
                 </a>
               </div>
-            )}
+            )} */}
 
             <TplnItemLink
               link={'/'}

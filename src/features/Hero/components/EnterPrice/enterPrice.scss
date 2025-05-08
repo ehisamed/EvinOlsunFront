@@ -45,7 +45,7 @@
 .price{
     display: flex;
     align-items: center;
-    background: color.$gray-modern-200;
+    background: color.$gray-modern-100;
     border-radius: 8px;
     border: 1px solid color.$gray-modern-200;
 }
@@ -58,7 +58,7 @@
     width: 100%;
     outline: none;
     border: none;
-    background: color.$gray-modern-200;
+    background: color.$gray-modern-100;
     padding: 11px 0px 11px 16px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -88,3 +88,4 @@
     font-size: font.$font-size14;
     color: color.$gray-modern-800;
 }
+

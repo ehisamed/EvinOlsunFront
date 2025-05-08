@@ -1,1 +1,2 @@
 meslehet hover = 15
+sideba = 25

@@ -42,6 +42,7 @@
         url('Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: fallback;
 }
 
 @font-face {
@@ -53,6 +54,7 @@
         url('Roboto-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
+    font-display: fallback;
 }
 
 @font-face {

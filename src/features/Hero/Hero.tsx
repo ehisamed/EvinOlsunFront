@@ -1,23 +1,41 @@
-import React, { useState } from 'react'
+import React, { memo } from 'react'
 import style from './moduleStyle.module.scss'
 import SelectHouseType from './components/SelectHouseType/SelectHouseType';
-import SelectRoomCount from './components/SelectRoomCount/SelectRoomCount';
+import SelectRoomCount from './components/SelectRoom/SelectRoomCount/SelectRoomCount';
 import EnterPrice from './components/EnterPrice/EnterPrice';
-import EnterCity from './components/EnterCity/EnterCity';
+import EnterAddress from './components/EnterAddress/EnterAddress';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import TabletFilter from './components/TabletFilter/TabletFilter';
+import MobileFilterHeader from './components/MobileFilterHeader/MobileFilterHeader';
+import { HERO_CONSTANTS } from '../../constants/HeroConstants';
+import { setEstateUsageType } from './state/filterSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { selectEstatePurposeType } from './state/filterSelectors';
 
 type Props = {
     title?: string;
 }
 
 const Hero: React.FC<Props> = ({ title }) => {
-    const [selectedSwitch, setSelectedSwitch] = useState<number | null>(0);
+    const dispatch = useAppDispatch()
+    const selectedSwitch = useAppSelector(state => state.filter.estateUsageType);
     let windowWith = useWindowWidth();
+    const estatePurposeType = useAppSelector(selectEstatePurposeType);
 
-    const handleSwitch = (index: number) => {
-        setSelectedSwitch(index);
+
+
+    const handleSwitch = (usageType: string) => {
+        dispatch(setEstateUsageType(usageType));
     }
+
+    const components = [
+        { component: <SelectHouseType />, condition: windowWith > 1024 },
+        { component: <SelectRoomCount />, condition: windowWith > 1024 && estatePurposeType !== HERO_CONSTANTS.filter.HOUSE_TYPE.TYPES[1]},
+        { component: <EnterPrice />, condition: windowWith > 1024 },
+        { component: <EnterAddress />, condition: true },
+        { component: <MobileFilterHeader />, condition: windowWith <= 768 },
+        { component: <TabletFilter />, condition: windowWith > 768 && windowWith < 1024 },
+    ];
 
     return (
         <div className={style.hero}>
@@ -26,42 +44,34 @@ const Hero: React.FC<Props> = ({ title }) => {
                 <div className={style.searchHead}>
                     <div className={style.switch}>
                         <button
-                            className={`${style.switchBtn} ${selectedSwitch === 0 ? style.active : ''}`}
-                            onClick={() => handleSwitch(0)}
+                            className={`${style.switchBtn} ${selectedSwitch === HERO_CONSTANTS.filter.SWITCH.BUY ? style.active : ''}`}
+                            onClick={() => handleSwitch(HERO_CONSTANTS.filter.SWITCH.BUY)}
                             type="button"
                         >
-                            Almaq
+                            {HERO_CONSTANTS.filter.SWITCH.BUY}
                         </button>
                         <button
-                            className={`${style.switchBtn} ${selectedSwitch === 1 ? style.active : ''}`}
-                            onClick={() => handleSwitch(1)}
+                            className={`${style.switchBtn} ${selectedSwitch === HERO_CONSTANTS.filter.SWITCH.RENT ? style.active : ''}`}
+                            onClick={() => handleSwitch(HERO_CONSTANTS.filter.SWITCH.RENT)}
                             type="button"
                         >
-                            Kirayə götürmək
+                            {HERO_CONSTANTS.filter.SWITCH.RENT}
                         </button>
                     </div>
                 </div>
-                <div className={`${style.searchContent} ${style.descGrid} ${windowWith < 1024 ? style.mobileGrid : ''}`}>
-                    {windowWith > 1024 && (
-                        <SelectHouseType />
-                    )}
+                <div className={`
+                    ${style.searchContent} 
+                    ${style.descGrid} 
+                    ${windowWith < 1024 ? style.mobileGrid : ''}
+                    ${estatePurposeType === HERO_CONSTANTS.filter.HOUSE_TYPE.TYPES[1] ? style.typePriceAddressSearch : ''}
+                    `}>
 
-                    {windowWith > 1024 && (
-                        <SelectRoomCount />
-                    )}
+                    {components.map((item, index) => (
+                        item.condition ? <React.Fragment key={index}>{item.component}</React.Fragment> : null
+                    ))}
 
-                    {windowWith > 1024 && (
-                        <EnterPrice />
-                    )}
-
-                    <EnterCity />
-
-                    {windowWith < 1024 && (
-                        <TabletFilter />
-                    )}
-
-                    <button className={style.SearchBtn}>
-                        Axtar
+                    <button className={style.searchBtn}>
+                        {HERO_CONSTANTS.filter.SEARCH_TXT}
                     </button>
                 </div>
             </form>
@@ -69,4 +79,4 @@ const Hero: React.FC<Props> = ({ title }) => {
     )
 }
 
-export default Hero
+export default memo(Hero)

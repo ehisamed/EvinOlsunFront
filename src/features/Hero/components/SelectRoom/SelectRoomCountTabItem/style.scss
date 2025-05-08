@@ -1,0 +1,32 @@
+@use '../../../../../styleConfig/fonts_variables' as font;
+@use '../../../../../styleConfig/mixins' as mixins;
+@use '../../../../../styleConfig/colors' as color;
+@use '../../../../../styleConfig/block_varibales' as blockvb;
+
+
+.select-room-tabbar{
+    height: 40px;
+    padding: 0px 12px;
+    border: 1px solid color.$gray-modern-400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: font.$font-size14;
+    color: color.$gray-modern-900;
+    font-weight: font.$rb-weight-medium;
+    cursor: pointer;
+    transition: border .2s ease;
+}
+
+.select-room-tabbar:not(.active-select-tab):hover{
+    border: 1px solid color.$gray-modern-600;
+}
+
+.select-room-tabbar:hover{
+    background: color.$gray-modern-100;
+}
+
+.active-select-tab{
+    border: 2px solid color.$gray-modern-900;
+}

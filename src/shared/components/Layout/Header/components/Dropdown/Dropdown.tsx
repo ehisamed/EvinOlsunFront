@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import DropDownIc from '../../../../../../assets/icons/DropDownIc';
 import './dropdown.scss'
-import DropdownItem from './DropdownItem';
 
 type Props = {
     title?: string;

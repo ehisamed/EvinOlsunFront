@@ -1,0 +1,19 @@
+@use '../../../../../../styleConfig/fonts_variables' as font;
+@use '../../../../../../styleConfig/mixins' as mixins;
+@use '../../../../../../styleConfig/colors' as color;
+@use '../../../../../../styleConfig/block_varibales' as blockvb;
+
+.tablet-select-room{
+    display: flex;
+    flex-direction: column;
+}
+
+.tablet-select-room-content{
+    background: color.$white;
+    cursor: default;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 5px;
+}

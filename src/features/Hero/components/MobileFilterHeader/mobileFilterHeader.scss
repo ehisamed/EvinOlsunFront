@@ -1,0 +1,19 @@
+@use '../../../../styleConfig/fonts_variables' as font;
+@use '../../../../styleConfig/mixins' as mixins;
+@use '../../../../styleConfig/colors' as color;
+@use '../../../../styleConfig/block_varibales' as blockvb;
+
+
+.mobile-filter{
+    width: fit-content;
+    background: color.$white;
+    border: 2px solid color.$gray-modern-400;
+    border-left: none;
+    border-radius: blockvb.$pd-mg-12;
+    border-radius: 0px;
+    font-size: font.$font-size16;
+    cursor: pointer;
+    user-select: none;
+    position: static;
+    width: 100%;
+}

@@ -1,0 +1,77 @@
+@use '../../../../../../styleConfig/fonts_variables' as font;
+@use '../../../../../../styleConfig/mixins' as mixins;
+@use '../../../../../../styleConfig/colors' as color;
+@use '../../../../../../styleConfig/block_varibales' as blockvb;
+
+
+.filter-multiCheckboxBlock{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background: color.$gray-modern-300;
+    }
+}
+
+.checkbox-item{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: blockvb.$pd-mg-16;
+}
+
+.checkbox-item:first-child{
+    margin-top: 0px;
+}
+
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px; 
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    margin-right: 10px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.custom-checkbox input:checked + .checkmark {
+    background-color: color.$gray-modern-700;
+    border-color: color.$gray-modern-700;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    width: 16px;
+    height: 16px; 
+    background-image: url('../../../../../../assets/icons/svg/check.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-item-title{
+    font-size: font.$font-size14;
+    font-weight: font.$rb-weight-regular;
+    color: color.$gray-modern-800;
+}

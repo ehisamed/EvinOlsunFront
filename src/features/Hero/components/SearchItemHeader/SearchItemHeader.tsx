@@ -19,9 +19,11 @@ const SearchItemHeader: React.FC<Props> = ({ children, prefix, suffix, suffixRot
                     {prefix}
                 </div>
             )}
-            <div className="search-item-header--title">
-                {children}
-            </div>
+            {children && (
+                <div className="search-item-header--title">
+                    {children}
+                </div>
+            )}
             {suffix && (
                 <div className={`search-item-header--suffix ${suffixRotate ? 'suffix-rotate' : null}`}>
                     {suffix}
