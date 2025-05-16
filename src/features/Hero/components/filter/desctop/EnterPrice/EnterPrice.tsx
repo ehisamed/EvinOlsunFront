@@ -1,12 +1,12 @@
 import React, { useState, memo } from 'react'
 import './enterPrice.scss'
-import DropDownIc from '../../../../assets/icons/DropDownIc'
-import useClickOutside from '../../../../hooks/useClickOutside'
-import SearchItemHeader from '../SearchItemHeader/SearchItemHeader'
-import PriceFieldV1 from '../../../../shared/components/ui/PriceFieldV1/PriceFieldV1'
-import { HERO_CONSTANTS } from '../../../../constants/HeroConstants'
-import { usePriceFilter } from '../../hooks/useFilterPrice'
-import { useFocusIndex } from '../../../../shared/hooks/useFocusedIndex'
+import DropDownIc from '../../../../../../assets/icons/DropDownIc'
+import useClickOutside from '../../../../../../hooks/useClickOutside'
+import SearchItemHeader from '../../../SearchItemHeader/SearchItemHeader'
+import PriceFieldV1 from '../../../../../../shared/components/ui/PriceFieldV1/PriceFieldV1'
+import { HERO_CONSTANTS } from '../../../../../../constants/HeroConstants'
+import { usePriceFilter } from '../../../../hooks/useFilterPrice'
+import { useFocusIndex } from '../../../../../../shared/hooks/useFocusedIndex'
 
 type Props = {
     title?: string

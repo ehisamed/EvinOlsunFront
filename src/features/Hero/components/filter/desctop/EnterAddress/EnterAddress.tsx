@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './enterAddress.scss'
-import SearchIc from '../../../../assets/icons/SearchIc';
-import CloseIc from '../../../../assets/icons/CloseIc';
-import useClickOutside from '../../../../hooks/useClickOutside';
-import { searchSuggestion } from '../../utils/searchSuggestion';
+import SearchIc from '../../../../../../assets/icons/SearchIc';
+import CloseIc from '../../../../../../assets/icons/CloseIc';
+import useClickOutside from '../../../../../../hooks/useClickOutside';
+import { searchSuggestion } from '../../../../utils/searchSuggestion';
 
 type Props = {
     title?: string;
@@ -32,7 +32,6 @@ const mockData = {
         "205": { title: "Москва, Комсомольская" }
     }
 }
-
 
 const EnterAddress: React.FC<Props> = ({ title }) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);

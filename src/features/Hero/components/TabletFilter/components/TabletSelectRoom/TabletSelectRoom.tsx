@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../../../../redux/hooks';
 import { selectRoomCount } from '../../../../state/filterSelectors';
 import { setRoomsCount } from '../../../../state/filterSlice';
 import { updateRoomCount } from '../../../../utils/roomCount';
-import SelectRoomTabItem from '../../../SelectRoom/SelectRoomCountTabItem/SelectRoomTabItem';
+import SelectRoomTabItem from '../../../filter/desctop/SelectRoom/SelectRoomCountTabItem/SelectRoomTabItem';
 
 const TabletSelectRoom = () => {
     const dispatch = useAppDispatch();

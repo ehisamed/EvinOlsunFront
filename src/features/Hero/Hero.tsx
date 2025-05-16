@@ -1,17 +1,15 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 import style from './moduleStyle.module.scss'
-import SelectHouseType from './components/SelectHouseType/SelectHouseType';
-import SelectRoomCount from './components/SelectRoom/SelectRoomCount/SelectRoomCount';
-import EnterPrice from './components/EnterPrice/EnterPrice';
-import EnterAddress from './components/EnterAddress/EnterAddress';
+import { RoomSelector, EnterPrice, EnterAddress, HouseType } from './components/filter/desctop';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import TabletFilter from './components/TabletFilter/TabletFilter';
 import { HERO_CONSTANTS } from '../../constants/HeroConstants';
-import { setEstateUsageType } from './state/filterSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectEstatePurposeType, selectEstateUsageType } from './state/filterSelectors';
 import MobileFilter from './components/MobileFilter/MobileFilter';
 import MobileFilterModal from './components/MobileFilterModal/MobileFilterModal';
+import { setEstateUsageType } from './state/filterSlice';
+
 
 type Props = {
     title?: string;
@@ -28,28 +26,9 @@ const Hero: React.FC<Props> = ({ title }) => {
         dispatch(setEstateUsageType(usageType));
     }
 
-    const filter = useAppSelector(state => state.filter);
-
-    useEffect(() => {
-        const params = new URLSearchParams();
-
-        if (filter.price.min) params.set('minPrice', filter.price.min.toString());
-        if (filter.price.max) params.set('maxPrice', filter.price.max.toString());
-        if (filter.estateUsageType) params.set('usage', filter.estateUsageType);
-        if (filter.estatePurposeType) params.set('purpose', filter.estatePurposeType);
-        // Добавь остальные параметры по необходимости
-
-        const queryString = params.toString();
-        const newUrl = `${window.location.pathname}?${queryString}`;
-
-        // Используем replaceState, чтобы не создавать новую запись в истории
-        window.history.replaceState(null, '', newUrl);
-
-    }, [filter]); // каждый раз при изменении фильтра обновляем URL
-
     const components = [
-        { component: <SelectHouseType />, condition: windowWith > 1023 },
-        { component: <SelectRoomCount />, condition: windowWith > 1023 && estatePurposeType !== HERO_CONSTANTS.filter.HOUSE_TYPE.TYPES[1] },
+        { component: <HouseType />, condition: windowWith > 1023 },
+        { component: <RoomSelector />, condition: windowWith > 1023 && estatePurposeType !== HERO_CONSTANTS.filter.HOUSE_TYPE.TYPES[1] },
         { component: <EnterPrice />, condition: windowWith > 1023 },
         { component: <EnterAddress />, condition: true },
         { component: <MobileFilter openFilter={() => setChangeMobileFilterVisibility(true)} />, condition: windowWith <= 768 },
