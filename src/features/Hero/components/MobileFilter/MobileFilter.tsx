@@ -1,11 +1,22 @@
 import React from 'react'
+import SearchItemHeader from '../SearchItemHeader/SearchItemHeader'
+import './mobileFilter.scss'
+import FilterIc from '../../../../assets/icons/FilterIc'
+import ModalV2 from '../../../../shared/ModalV2/ModalV2'
+import DropDownIc from '../../../../assets/icons/DropDownIc'
 
-const MobileFilter: React.FC = () => {
-  return (
-    <div className='mobile-filter'>
+type Props = {
+    openFilter: () => void,
+}
 
-    </div>
-  )
+const MobileFilter: React.FC<Props> = ({ openFilter }) => {
+
+
+    return (
+        <div className='mobile-filter' onClick={openFilter}>
+            <SearchItemHeader prefix={<FilterIc width={19} height={19} />}></SearchItemHeader>
+        </div>
+    )
 }
 
 export default MobileFilter

@@ -6,19 +6,25 @@ type Props = {
     placeholder?: string;
     name: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    focused?: boolean; 
+    focused?: boolean;
     onFocus: () => void;
+    inputRef?: React.Ref<HTMLDivElement>;
 }
 
-const PriceFieldV1: React.FC<Props> = ({ value = 0, placeholder, name, onChange, focused, onFocus }) => {
+const PriceFieldV1: React.FC<Props> = ({ value = 0, placeholder, name, onChange, focused, onFocus, inputRef }) => {
     return (
-        <div className={`price ${focused ? 'price-focused' : ''}`} onMouseDown={onFocus}>
+        <div
+            ref={inputRef}
+            className={`price ${focused ? 'price-focused' : ''}`}
+            onMouseDown={onFocus}
+        >
             <input
                 type="text"
-                className='price-field'
+                className={`price-field price-field--focused`}
                 value={value > 0 ? value.toString() : ''}
                 placeholder={placeholder}
                 name={name}
+                autoComplete='off'
                 onChange={onChange}
             />
             <span className='price-symbol'>₼</span>

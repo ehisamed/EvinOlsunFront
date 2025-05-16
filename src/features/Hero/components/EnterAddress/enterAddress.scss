@@ -23,13 +23,16 @@
     justify-content: start;
     align-items: center;
     gap: 10px;
-    padding: 10px 16px;
+    // padding: 15px 16px;
+    padding: 0px 16px;
+    height: 50px;
 }
 
 .enter-city-field {
     outline: none;
     border: none;
     width: 100%;
+    height: 100%;
 }
 
 .enter-city-field::placeholder {
@@ -52,6 +55,7 @@
 
 .enter-city-title{
     width: 100%;
+    height: 100%;
 }
 
 .clear-btn {
@@ -65,7 +69,7 @@
     transition: .3s color ease;
     cursor: pointer;
     margin-left: auto;
-    visibility: hidden;
+    // visibility: hidden;
 
     &:hover {
         color: color.$gray-modern-700;

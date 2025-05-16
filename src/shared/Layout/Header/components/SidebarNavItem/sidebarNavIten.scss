@@ -1,0 +1,56 @@
+@use '../../../../../styleConfig/fonts_variables' as font;
+@use '../../../../../styleConfig/mixins' as mixins;
+@use '../../../../../styleConfig/colors' as color;
+@use '../../../../../styleConfig/block_varibales' as blockvb;
+
+.sidebar{
+    display: block;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar-navItem{
+    display: flex;
+}
+
+.sidebar-navItem:active {
+    background-color: color.$gray-modern-100;
+}
+
+.sidebar-navItem-itemContnet{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 0px 16px;
+    height: 52px;
+}
+
+.sidebar-navItem-title{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 8px;
+    @include mixins.text(14, color.$gray-modern-600, color.$gray-modern-800);
+}
+
+
+.sidebar-navItem-text{
+    font-size: font.$font-size14;
+    font-weight: font.$rb-weight-medium;
+
+}
+
+.sidebar-navItem-link-text{
+    font-size: font.$font-size14;
+    font-weight: font.$rb-weight-semibold;
+    color: color.$gray-modern-800;
+    text-decoration: underline;
+}
+
+@media (max-width: 585px){
+    .sidebar-navItem-itemContnet{
+        padding: 0px 12px;
+    }
+}

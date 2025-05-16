@@ -1,0 +1,32 @@
+@use '../../styleConfig/fonts_variables' as font;
+@use '../../styleConfig/mixins' as mixins;
+@use '../../styleConfig/colors' as color;
+@use '../../styleConfig/block_varibales' as blockvb;
+
+.recomendations{
+    width: 100%;
+    max-width: 1168px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    margin: 0 auto;
+    background: color.$white;
+    padding: blockvb.$pd-mg-32 0;
+    margin-top: 24px;
+    border-radius: 24px;
+    font-family: font.$rb-font;
+}
+
+.recomendations--title{
+    font-size: font.$font-size24;
+    font-weight: font.$rb-weight-semibold;
+    color: color.$gray-modern-800;
+    margin: 0px blockvb.$pd-mg-24;
+}
+
+@media (max-width: 768px){
+    .recomendations--title{
+        font-size: font.$font-size20;
+    }
+}

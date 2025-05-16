@@ -14,6 +14,7 @@
 
 .price-focused{
     border: 1px solid color.$gray-modern-400;
+    background: none;
 }
 
 .price-field{
@@ -27,6 +28,10 @@
     font-size: font.$font-size14;
     color: color.$gray-modern-800;
     font-weight: font.$rb-weight-medium;
+}
+
+.price-field--focused{
+    background: none;
 }
 
 .price-field::placeholder {

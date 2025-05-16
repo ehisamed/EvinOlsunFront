@@ -54,6 +54,11 @@ const EnterAddress: React.FC<Props> = ({ title }) => {
         }
     };
 
+    const handleClearInput = () => {
+        setInputValue('');
+        setIsVisible(false);
+    };
+
     return (
         <div className='enter-city' ref={cityEnterRef}>
             <div className="enter-city-header">
@@ -69,9 +74,11 @@ const EnterAddress: React.FC<Props> = ({ title }) => {
                         placeholder='Address'
                     />
                 </div>
-                <button className="clear-btn">
-                    <CloseIc width={14} height={14} />
-                </button>
+                {inputValue.length > 0 && (
+                    <button className={`clear-btn`} onClick={handleClearInput}>
+                        <CloseIc width={14} height={14} />
+                    </button>
+                )}
             </div>
             <div className={`enter-city-content ${isVisible ? 'enter-city-isvisible' : null}`}>
                 {isVisible && (

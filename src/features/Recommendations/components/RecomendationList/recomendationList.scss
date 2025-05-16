@@ -1,0 +1,33 @@
+@use '../../../../styleConfig/colors' as color;
+@use '../../../../styleConfig/fonts_variables' as font;
+@use '../../../../styleConfig/block_varibales' as blockvb;
+
+.recomendation-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 18px;
+    column-gap: 12px;
+    padding: blockvb.$pd-mg-20 blockvb.$pd-mg-24;
+}
+
+@media (max-width: 1024px) {
+    .recomendation-list {
+        width: 100%;
+        overflow: hidden;
+        overflow-x: scroll;
+        display: flex;
+    }
+
+    .recomendation-list::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .recomendation-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        overflow-x: auto;
+    }
+}

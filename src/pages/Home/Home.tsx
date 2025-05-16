@@ -1,8 +1,9 @@
 import React from 'react'
-import Main from '../../shared/components/Layout/Main/Main'
-import Footer from '../../shared/components/Layout/Footer/Footer'
-import Header from '../../shared/components/Layout/Header/Header'
+import Main from '../../shared/Layout/Main/Main'
+import Footer from '../../shared/Layout/Footer/Footer'
+import Header from '../../shared//Layout/Header/Header'
 import Hero from '../../features/Hero/Hero'
+import Recommendations from '../../features/Recommendations/Recommendations'
 
 const Home = () => {
   return (
@@ -13,7 +14,8 @@ const Home = () => {
     }}>
         <Header />
         <Main>
-            <Hero /> 
+            <Hero title='Evin olsun!'/> 
+            <Recommendations />
         </Main>
         <Footer />
     </div>

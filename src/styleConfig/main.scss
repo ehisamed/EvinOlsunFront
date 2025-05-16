@@ -11,6 +11,11 @@
 body{
     font-family: fonts.$rb-font;
     font-display: optional;
+    letter-spacing: 0.5px;
+}
+
+button{
+    letter-spacing: 0.5px;
 }
 
 a{

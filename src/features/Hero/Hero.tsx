@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import style from './moduleStyle.module.scss'
 import SelectHouseType from './components/SelectHouseType/SelectHouseType';
 import SelectRoomCount from './components/SelectRoom/SelectRoomCount/SelectRoomCount';
@@ -6,11 +6,12 @@ import EnterPrice from './components/EnterPrice/EnterPrice';
 import EnterAddress from './components/EnterAddress/EnterAddress';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import TabletFilter from './components/TabletFilter/TabletFilter';
-import MobileFilterHeader from './components/MobileFilterHeader/MobileFilterHeader';
 import { HERO_CONSTANTS } from '../../constants/HeroConstants';
 import { setEstateUsageType } from './state/filterSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { selectEstatePurposeType } from './state/filterSelectors';
+import { selectEstatePurposeType, selectEstateUsageType } from './state/filterSelectors';
+import MobileFilter from './components/MobileFilter/MobileFilter';
+import MobileFilterModal from './components/MobileFilterModal/MobileFilterModal';
 
 type Props = {
     title?: string;
@@ -18,24 +19,43 @@ type Props = {
 
 const Hero: React.FC<Props> = ({ title }) => {
     const dispatch = useAppDispatch()
-    const selectedSwitch = useAppSelector(state => state.filter.estateUsageType);
+    const selectedEstateUsageType = useAppSelector(selectEstateUsageType);
     let windowWith = useWindowWidth();
     const estatePurposeType = useAppSelector(selectEstatePurposeType);
-
-
+    const [changeMobileFilterVisibility, setChangeMobileFilterVisibility] = useState(false);
 
     const handleSwitch = (usageType: string) => {
         dispatch(setEstateUsageType(usageType));
     }
 
+    const filter = useAppSelector(state => state.filter);
+
+    useEffect(() => {
+        const params = new URLSearchParams();
+
+        if (filter.price.min) params.set('minPrice', filter.price.min.toString());
+        if (filter.price.max) params.set('maxPrice', filter.price.max.toString());
+        if (filter.estateUsageType) params.set('usage', filter.estateUsageType);
+        if (filter.estatePurposeType) params.set('purpose', filter.estatePurposeType);
+        // Добавь остальные параметры по необходимости
+
+        const queryString = params.toString();
+        const newUrl = `${window.location.pathname}?${queryString}`;
+
+        // Используем replaceState, чтобы не создавать новую запись в истории
+        window.history.replaceState(null, '', newUrl);
+
+    }, [filter]); // каждый раз при изменении фильтра обновляем URL
+
     const components = [
-        { component: <SelectHouseType />, condition: windowWith > 1024 },
-        { component: <SelectRoomCount />, condition: windowWith > 1024 && estatePurposeType !== HERO_CONSTANTS.filter.HOUSE_TYPE.TYPES[1]},
-        { component: <EnterPrice />, condition: windowWith > 1024 },
+        { component: <SelectHouseType />, condition: windowWith > 1023 },
+        { component: <SelectRoomCount />, condition: windowWith > 1023 && estatePurposeType !== HERO_CONSTANTS.filter.HOUSE_TYPE.TYPES[1] },
+        { component: <EnterPrice />, condition: windowWith > 1023 },
         { component: <EnterAddress />, condition: true },
-        { component: <MobileFilterHeader />, condition: windowWith <= 768 },
+        { component: <MobileFilter openFilter={() => setChangeMobileFilterVisibility(true)} />, condition: windowWith <= 768 },
         { component: <TabletFilter />, condition: windowWith > 768 && windowWith < 1024 },
     ];
+
 
     return (
         <div className={style.hero}>
@@ -44,14 +64,14 @@ const Hero: React.FC<Props> = ({ title }) => {
                 <div className={style.searchHead}>
                     <div className={style.switch}>
                         <button
-                            className={`${style.switchBtn} ${selectedSwitch === HERO_CONSTANTS.filter.SWITCH.BUY ? style.active : ''}`}
+                            className={`${style.switchBtn} ${selectedEstateUsageType === HERO_CONSTANTS.filter.SWITCH.BUY ? style.active : ''}`}
                             onClick={() => handleSwitch(HERO_CONSTANTS.filter.SWITCH.BUY)}
                             type="button"
                         >
                             {HERO_CONSTANTS.filter.SWITCH.BUY}
                         </button>
                         <button
-                            className={`${style.switchBtn} ${selectedSwitch === HERO_CONSTANTS.filter.SWITCH.RENT ? style.active : ''}`}
+                            className={`${style.switchBtn} ${selectedEstateUsageType === HERO_CONSTANTS.filter.SWITCH.RENT ? style.active : ''}`}
                             onClick={() => handleSwitch(HERO_CONSTANTS.filter.SWITCH.RENT)}
                             type="button"
                         >
@@ -75,6 +95,8 @@ const Hero: React.FC<Props> = ({ title }) => {
                     </button>
                 </div>
             </form>
+
+            <MobileFilterModal isOpen={changeMobileFilterVisibility} onClose={() => setChangeMobileFilterVisibility(false)} />
         </div>
     )
 }
