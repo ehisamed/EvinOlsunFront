@@ -2,14 +2,13 @@ import React, { memo, useState } from 'react'
 import style from './moduleStyle.module.scss'
 import { RoomSelector, EnterPrice, EnterAddress, HouseType } from './components/filter/desctop';
 import useWindowWidth from '../../hooks/useWindowWidth';
-import TabletFilter from './components/TabletFilter/TabletFilter';
+import TabletFilter from './components/filter/tablet/TabletFilter';
 import { HERO_CONSTANTS } from '../../constants/HeroConstants';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectEstatePurposeType, selectEstateUsageType } from './state/filterSelectors';
 import MobileFilter from './components/MobileFilter/MobileFilter';
 import MobileFilterModal from './components/MobileFilterModal/MobileFilterModal';
 import { setEstateUsageType } from './state/filterSlice';
-
 
 type Props = {
     title?: string;
@@ -34,7 +33,6 @@ const Hero: React.FC<Props> = ({ title }) => {
         { component: <MobileFilter openFilter={() => setChangeMobileFilterVisibility(true)} />, condition: windowWith <= 768 },
         { component: <TabletFilter />, condition: windowWith > 768 && windowWith < 1024 },
     ];
-
 
     return (
         <div className={style.hero}>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useClickOutside from "../../../hooks/useClickOutside";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { HERO_CONSTANTS } from "../../../constants/HeroConstants";
 import { setEstatePurposeType, toggleEstateType } from "../state/filterSlice";

@@ -1,19 +1,19 @@
 import React, { memo } from 'react'
-import './tabletAppBar.scss'
+import './selectHousePurposeType.scss'
 
-type TabletAppBarProps = {
+type Props = {
     selectedAppBar: string | null;
     onAppBarChange: (item: string) => void;
     appBarTabs: string[];
 }
 
-const TabletAppBar: React.FC<TabletAppBarProps> = ({ selectedAppBar, appBarTabs, onAppBarChange}) => {
+const SelectHousePurposeType: React.FC<Props> = ({ selectedAppBar, appBarTabs, onAppBarChange}) => {
     return (
         <div className={`tablet-filter-appbar`}>
             {appBarTabs.map((item, index) => {
                 return (
                     <div
-                        className={`appbar-tab ${selectedAppBar === item ? 'active-appbar-tab' : null}`}
+                        className={`tablet-filter-appbar__tab ${selectedAppBar === item ? 'tablet-filter-appbar__tab--active' : null}`}
                         key={index}
                         onClick={() => onAppBarChange(item)}
                     >
@@ -25,4 +25,4 @@ const TabletAppBar: React.FC<TabletAppBarProps> = ({ selectedAppBar, appBarTabs,
     )
 }
 
-export default memo(TabletAppBar)
+export default memo(SelectHousePurposeType)

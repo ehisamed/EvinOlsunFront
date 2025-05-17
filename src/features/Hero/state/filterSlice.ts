@@ -8,7 +8,7 @@ interface FilterState {
     };
     estateUsageType: string; /* BUY OR RENT (Satın almaq, Kirayə götürmək) */
     estatePurposeType: string; /* LIVING OR COMMERCIAL (Yaşayış, Ticari) */
-    selectedEstateTypes: string[]; /* MULTICHECKBOX (LIVING, COMMERCIAL) */
+    selectedEstateTypes: string[]; /* MULTICHECKBOX */
     roomCount: string[]; /* Array */
     address: string
 }

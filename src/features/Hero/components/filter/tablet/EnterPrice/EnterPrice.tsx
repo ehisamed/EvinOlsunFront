@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
-import './tabletPriceEnter.scss'
+import './enterPrice.scss'
 import PriceFieldV1 from '../../../../../../shared/components/ui/PriceFieldV1/PriceFieldV1'
 import { usePriceFilter } from '../../../../hooks/useFilterPrice';
 import { useFocusIndex } from '../../../../../../shared/hooks/useFocusedIndex';
 import useClickOutside from '../../../../../../hooks/useClickOutside';
 
-const TabletPriceEnter: React.FC = () => {
+const EnterPrice: React.FC = () => {
     const { data, handlePriceField } = usePriceFilter();
     const { focusedInput, handleFocus, clearFocus } = useFocusIndex();
 
@@ -18,9 +18,9 @@ const TabletPriceEnter: React.FC = () => {
     });
 
     return (
-        <div className='tablet-price-enter'>
-            <p className='section-title'>Qiymet</p>
-            <div className="tablet-price-enter">
+        <div className='tablet-enter-price'>
+            <p className='tablet-enter-price__title'>Qiymet</p>
+            <div className="tablet-enter-price__fields">
                 <PriceFieldV1
                     inputRef={minInputRef}
                     value={data.min}
@@ -44,4 +44,4 @@ const TabletPriceEnter: React.FC = () => {
     )
 }
 
-export default memo(TabletPriceEnter)
+export default memo(EnterPrice)
